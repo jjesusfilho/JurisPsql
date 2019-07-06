@@ -1,0 +1,34 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+`r, include = FALSE knitr::opts_chunk$set( collapse = TRUE, comment =
+"#>", fig.path = "man/figures/README-", out.width = "100%" )` \#
+JurisPsql
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+The goal of JurisPsql is to …
+
+## Installation
+
+You can install the released version of JurisPsql from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+pak::pkg_install("jjesusfilho/JurisPsql")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+`r example library(JurisPsql) ## basic example code`
+
+What is special about using `README.Rmd` instead of just `README.md`?
+You can include R chunks like so:
+
+Please note that the ‘JurisPsql’ project is released with a [Contributor
+Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
+project, you agree to abide by its terms.
