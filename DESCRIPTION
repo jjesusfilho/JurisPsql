@@ -2,12 +2,20 @@ Package: JurisPsql
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Jose",
+           family = "de Jesus Filho",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "jose@consudata.com.br",
+           comment = c(ORCID = "https://orcid.org/0000-0001-7415-7383"))
 Description: What the package does (one paragraph).
-License: What license it uses
+License: MIT + file LICENSE
 Encoding: UTF-8
+Language: pt_BR
 LazyData: true
+Imports: 
+    DBI,
+    dbx,
+    glue,
+    rlang,
+    magrittr
+RoxygenNote: 6.1.1
