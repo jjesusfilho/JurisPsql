@@ -15,8 +15,7 @@ found in the `dbplyr` package.
 
 ## Installation
 
-You can install the released version of JurisPsql from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the development version with:
 
 ``` r
 pak::pkg_install("jjesusfilho/JurisPsql")
