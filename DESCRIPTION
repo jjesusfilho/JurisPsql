@@ -1,6 +1,6 @@
 Package: JurisPsql
 Title: Provides Functions to Manipulate PostgreSQL Legal Databases
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Jose",
            family = "de Jesus Filho",
@@ -12,6 +12,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Language: pt_BR
 LazyData: true
+Depends: R (>= 2.10)
+ByteCompile: true 
 Imports: 
     DBI,
     dbx,
