@@ -17,6 +17,9 @@ knitr::opts_chunk$set(
 # JurisPsql
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/jjesusfilho/JurisPsql.svg?branch=master)](https://travis-ci.org/jjesusfilho/JurisPsql)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/jjesusfilho/JurisPsql?branch=master&svg=true)](https://ci.appveyor.com/project/jjesusfilho/JurisPsql)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 The goal of JurisPsql is to provide functions to manipulate Brazilian legal databases from R.
