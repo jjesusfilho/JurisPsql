@@ -25,7 +25,7 @@ psql_classify_decision<-function(con,tbl=NULL,decision=NULL,conclusion=NULL){
   prejudicado<-"prejudicado"
   nulo<-"nulo"
   extinto<-"extinto"
-  outro<-"outro"
+  nulo<-NULL
 
   query<-glue::glue_sql(
     "ALTER TABLE {`tbl`} ADD {`conclusion`} text", .con=con)
@@ -44,7 +44,7 @@ psql_classify_decision<-function(con,tbl=NULL,decision=NULL,conclusion=NULL){
   WHEN {`tbl`}.{`decision`} ILIKE  {v6} THEN {nulo}
   WHEN {`tbl`}.{`decision`} ILIKE  {v7} THEN {nulo}
   WHEN {`tbl`}.{`decision`} ILIKE  {v8} THEN {extinto}
-  ELSE {outro}
+  ELSE {nulo}
   END",.con=con)
 
 
