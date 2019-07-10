@@ -10,7 +10,7 @@ psql_do <- function(token = NULL) {
   url <- "https://api.digitalocean.com/v2/databases"
 
   if (is.null(token)) {
-    response <- httr::GET(url, httr::add_headers(Authorization = Sys.getenv(DO_TOKEN)), httr::content_type_json()) %>%
+    response <- httr::GET(url, httr::add_headers(Authorization = Sys.getenv("DO_TOKEN")), httr::content_type_json()) %>%
       httr::content("text") %>%
       jsonlite::fromJSON()
   } else {
