@@ -30,7 +30,7 @@ pak::pkg_install("jjesusfilho/JurisPsql")
 ## Usage
 
 I will be adding new functions little by little, but right now there is
-one very usufull function, which is the decision classifier.
+one very useful function, which is the decision classifier.
 
 ``` r
 
