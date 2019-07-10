@@ -10,18 +10,20 @@
 #' @export
 #'
 #' @examples
-psql_sample <- function(con, tbl=NULL,column=NULL,value=NULL, n=10) {
-  if (is.null(column)){
-    query<-glue::glue_sql("SElECT *
+psql_sample <- function(con, tbl = NULL, column = NULL, value = NULL, n = 10) {
+  if (is.null(column)) {
+    query <- glue::glue_sql("SElECT *
                       FROM {`tbl`}
                       ORDER BY random() LIMIT {n}",
-                          .con=con)
+      .con = con
+    )
   } else {
-    query<-glue::glue_sql("SElECT *
+    query <- glue::glue_sql("SElECT *
                       FROM {`tbl`}
                       WHERE {`tbl`}.{`column`} = {value}
                       ORDER BY random() LIMIT {n}",
-                          .con=con)
+      .con = con
+    )
   }
-  DBI::dbGetQuery(con,query)
+  DBI::dbGetQuery(con, query)
 }
