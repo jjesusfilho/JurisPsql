@@ -16,6 +16,17 @@ psql_classify_decision(con, tbl = NULL, decision = NULL,
 
 \item{conclusion}{name of new column}
 }
+\value{
+it just adds to specified table a new column
+}
 \description{
 Creates a new column giving a one word conclusion of the decision
+}
+\examples{
+\dontrun{
+con <- DBI::dbConnect(RPostgres::Postgres())
+data(consumidor)
+dplyr::copy_to(con,"consumidor",consumidor)
+psql_classify_decision(con,"consumidor","julgado","decisao")
+}
 }

@@ -24,8 +24,11 @@ found in the `dbplyr` package.
 You can install the development version with:
 
 ``` r
-pak::pkg_install("jjesusfilho/JurisPsql")
+devtools::install_github("jjesusfilho/JurisPsql")
 ```
+
+Obs. You must have a recent version of devtools installed, because this
+package depends on other `tjsp` package which is only on Github.
 
 ## Usage
 

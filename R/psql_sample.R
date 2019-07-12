@@ -6,10 +6,9 @@
 #' @param value optional column value to apply filter
 #' @param n number of rows, defaults to 10.
 #'
-#' @return
+#' @return a data.frame sample according to specified arguements.
 #' @export
 #'
-#' @examples
 psql_sample <- function(con, tbl = NULL, column = NULL, value = NULL, n = 10) {
   if (is.null(column)) {
     query <- glue::glue_sql("SElECT *

@@ -2,10 +2,9 @@
 #'
 #' @param token you get this token from your digital ocean
 #'     account.
-#' @details
+#'
 #' @return a list with all details about the database.
 #' @export
-#'
 psql_do <- function(token = NULL) {
   url <- "https://api.digitalocean.com/v2/databases"
 

@@ -17,6 +17,9 @@ psql_sample(con, tbl = NULL, column = NULL, value = NULL, n = 10)
 
 \item{n}{number of rows, defaults to 10.}
 }
+\value{
+a data.frame sample according to specified arguements.
+}
 \description{
 Gets a table's sample
 }
