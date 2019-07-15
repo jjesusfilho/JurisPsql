@@ -19,6 +19,7 @@ psql_cjpg_tokenize <- function(con,tbl,language="portuguese"){
   source<-list(a = c("assunto", "A"), j = c("julgado", "B"))
   target<-"document_tokens"
   language<-"portuguese"
+  idx<-"document_idx"
   query<-glue::glue_sql("ALTER TABLE {`tbl`} ADD COLUMN {`target`} TSVECTOR",.con=con)
 
   res<-DBI::dbSendQuery(con,query)
@@ -31,4 +32,8 @@ psql_cjpg_tokenize <- function(con,tbl,language="portuguese"){
   res<-DBI::dbSendQuery(con,query)
   DBI::dbClearResult(res)
 
+  query<-glue::glue_sql("CREATE INDEX {`idx`} ON {`tbl`} USING GIN ({`target`})",.con=con)
+
+  res<-DBI::dbSendQuery(con,query)
+  DBI::dbClearResult(res)
 }
