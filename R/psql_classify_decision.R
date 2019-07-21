@@ -17,13 +17,14 @@
 #'}
 psql_classify_decision <- function(con, tbl = NULL, decision = NULL, conclusion = NULL) {
   v1 <- "% parcial%"
-  v2 <- "% procedente %"
-  v3 <- "% condeno %"
-  v4 <- "% improcedente%"
-  v5 <- "% prejudicad%"
-  v6 <- "% nulo %"
-  v7 <- "% anul%"
-  v8 <- "% extint%"
+  v2 <- "% procedente em parte%"
+  v3 <- "% procedente %"
+  v4 <- "% condeno %"
+  v5 <- "% improcedente%"
+  v6 <- "% prejudicad%"
+  v7 <- "% nulo %"
+  v8 <- "% anul%"
+  v9 <- "% extint%"
 
   parcial <- "parcial"
   procedente <- "procedente"
@@ -45,13 +46,14 @@ psql_classify_decision <- function(con, tbl = NULL, decision = NULL, conclusion 
     "UPDATE {`tbl`}
   SET {`conclusion`} =
   CASE WHEN {`tbl`}.{`decision`} ILIKE {v1} THEN {parcial}
-  WHEN {`tbl`}.{`decision`} ILIKE  {v2} THEN {procedente}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v2} THEN {parcial}
   WHEN {`tbl`}.{`decision`} ILIKE  {v3} THEN {procedente}
-  WHEN {`tbl`}.{`decision`} ILIKE  {v4} THEN {improcedente}
-  WHEN {`tbl`}.{`decision`} ILIKE  {v5} THEN {prejudicado}
-  WHEN {`tbl`}.{`decision`} ILIKE  {v6} THEN {nulo}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v4} THEN {procedente}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v5} THEN {improcedente}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v6} THEN {prejudicado}
   WHEN {`tbl`}.{`decision`} ILIKE  {v7} THEN {nulo}
-  WHEN {`tbl`}.{`decision`} ILIKE  {v8} THEN {extinto}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v8} THEN {nulo}
+  WHEN {`tbl`}.{`decision`} ILIKE  {v9} THEN {extinto}
   ELSE {nulo}
   END",
     .con = con
