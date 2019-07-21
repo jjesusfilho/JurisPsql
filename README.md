@@ -53,8 +53,17 @@ psql_classify_decision(con,"consumidor","julgado","decisao")
 I have implemented full-text search through the functions
 `psql_cjpg_tokenize` and `psql_cjpg_query`. I still have some features
 to implement but they are working well and I really think that with
-PostgreSQL you have the best of both worlds, no need to use
-elasticsearch or solr.
+PostgreSQL you have the best of both worlds, no need to use either
+elastic-search or solr.
+
+This feature is particularly important to improve full-text search on
+whole-text decisions and also on panel opinions. Checkout how it works:
+
+``` r
+con <- DBI::dbConnect(RPostgres::Postgres())
+
+psql_write_cjpg(con,"consumidor",consumidor)
+```
 
 Please note that the ‘JurisPsql’ project is released with a [Contributor
 Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this

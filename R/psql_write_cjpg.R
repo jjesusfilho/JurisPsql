@@ -9,7 +9,7 @@
 #' @param tbl table name
 #' @param data cjpg data.frame to be written.
 #'
-#' @return
+#' @return returns NULL if everything went well
 #' @export
 #'
 #' @examples
