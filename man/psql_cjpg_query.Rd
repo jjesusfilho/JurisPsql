@@ -4,7 +4,7 @@
 \alias{psql_cjpg_query}
 \title{PostgreSQL full-text search}
 \usage{
-psql_cjpg_query(con, tbl, query, language = "portuguese")
+psql_cjpg_query(con, tbl, query)
 }
 \arguments{
 \item{con}{connection}
@@ -13,8 +13,6 @@ psql_cjpg_query(con, tbl, query, language = "portuguese")
 
 \item{query}{words to be searched. Separate by "&" (AND), "|" (OR),
 or "<->" (FOLLOWED BY) to search for more than one word.}
-
-\item{language}{Defaults to "portuguese"}
 }
 \value{
 A data.frame with the cjpg decisions according to

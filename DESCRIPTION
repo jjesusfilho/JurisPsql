@@ -27,3 +27,7 @@ RoxygenNote: 6.1.1
 URL: https://github.com/jjesusfilho/JurisPsql
 BugReports: https://github.com/jjesusfilho/JurisPsql/issues
 Remotes: jjesusfilho/tjsp
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

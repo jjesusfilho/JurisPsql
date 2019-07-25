@@ -51,19 +51,33 @@ psql_classify_decision(con,"consumidor","julgado","decisao")
 ## Full-text search
 
 I have implemented full-text search through the functions
-`psql_cjpg_tokenize` and `psql_cjpg_query`. I still have some features
-to implement but they are working well and I really think that with
-PostgreSQL you have the best of both worlds, no need to use either
-elastic-search or solr.
+`psql_write_cjpg`, `psql_cjpg_tokenize`, and `psql_cjpg_query`. I still
+have some features to implement but they are working well and I really
+think that with PostgreSQL you have the best of both worlds, no need to
+use either elastic-search or solr.
 
 This feature is particularly important to improve full-text search on
-whole-text decisions and also on panel opinions. Checkout how it works:
+whole-text decisions and also on panel opinions.
+
+Function `psql_write_cjpg` is not a replacement for `DBI::dbWriteTable`.
+This function will create a table, write a data.frame to it, create a
+primary key and create an inverted weighted index. So don’t use it if
+you think is to much.
+
+Depending on your PostgreSQL configuration it might take a long time if
+the number of documents is large. I have indexed 700.000 judicial
+decisions with minimal PostgreSQL config and it took several minutes.
 
 ``` r
 con <- DBI::dbConnect(RPostgres::Postgres())
 
 psql_write_cjpg(con,"consumidor",consumidor)
 ```
+
+Once the indexing is over, you can use function `psql_cjpg_query` to
+search for words or phrases the same way you do with any web search
+engine. You can also include it in your shinyapp to allow users to do
+search.
 
 Please note that the ‘JurisPsql’ project is released with a [Contributor
 Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this

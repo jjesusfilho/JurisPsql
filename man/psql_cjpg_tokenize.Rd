@@ -4,14 +4,12 @@
 \alias{psql_cjpg_tokenize}
 \title{Creates an index from columns assunto and julgados}
 \usage{
-psql_cjpg_tokenize(con, tbl, language = "portuguese")
+psql_cjpg_tokenize(con, tbl)
 }
 \arguments{
 \item{con}{connection}
 
 \item{tbl}{table}
-
-\item{language}{Defaults to "portuguese"}
 }
 \value{
 No R object is returned

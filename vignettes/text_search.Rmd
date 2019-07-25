@@ -1,0 +1,46 @@
+---
+title: "Busca textual com JurisPsql"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Busca textual com JurisPsql}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introdução
+
+Pesquisa de texto completo (ou apenas pesquisa de texto) permite identificar documentos em linguagem natural que satisfaçam uma consulta e, opcionalmente, classificá-los por relevância para a consulta. O tipo de pesquisa mais comum é encontrar todos os documentos que contêm termos de consulta e retorná-los em ordem de semelhança com a consulta. Noções de consulta e similaridade são muito flexíveis e se ajustam a aplicações específicas. A forma mais simples pesquisa toma em conta a consulta como um conjunto de palavras e a similaridade como a frequência de palavras consultadas no documento.
+
+Buscas de palavras ou frases em textos têm se beneficiado de técnicas como expressões regulares (regex) e de busca fonética. No entanto, essas técnicas possuem limitações conhecidas:
+
+- Elas não fazem uso de todas as categorias linguísticas. A busca fonética leva em conta somente uma categoria linguística, a fonética. Por sua vez, expressões regulares usam critérios heurísticos, os quais não podem ser extrapolados para além do corpus em consideração.
+
+- Elas não ordenam os resultados da busca com base na similaridade da busca, o que os tornam inefetivos quando milhares de textos são submetidos à busca.
+
+- Elas tendem a ser lentas vez que a busca é realizada no próprio texto, não em um índice. 
+
+A busca textual, por sua vez, toma em conta as propriedades linguísticas do idioma a fim de otimizar os resultados da busca. Para tanto, ela recorre ao processamento de linguagem natural (NLP na sigla em inglês). Familiaridade com conceitos-chave de NLP é importante para saber como pre-processar os textos para tornar busca relevante:
+
+- Index invertido.
+
+- Stopwords
+
+- Lexema. 
+Um lexema é uma string, assim como um token, mas foi normalizado de modo que diferentes formas da mesma palavra são feitas da mesma forma. Por exemplo, a normalização quase sempre inclui letras maiúsculas em minúsculas e geralmente envolve a remoção de sufixos (como s ou es em inglês).
+
+- Lógica fuzzy
+
+- Similaridade
+
+- Stemming
+
+- Lemmanization
+
+- Tokenização
