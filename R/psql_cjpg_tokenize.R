@@ -16,7 +16,7 @@
 psql_cjpg_tokenize <- function(con, tbl) {
   source <- list(a = c("assunto", "A"), j = c("julgado", "B"))
   target <- "document_tokens"
-  idx <- "document_idx"
+  idx <- paste0(tbl,"_idx")
   query <- glue::glue_sql("ALTER TABLE {`tbl`} ADD COLUMN {`target`} TSVECTOR", .con = con)
 
   res <- DBI::dbSendQuery(con, query)
