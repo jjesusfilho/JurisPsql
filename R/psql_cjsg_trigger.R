@@ -13,7 +13,6 @@
 #'
 
 psql_cjpg_trigger <- function(con, tbl, config = "pg_catalog.portuguese") {
-  tbl <- "tbl"
 
   source <- list(a = c("assunto", "A"), j = c("julgado", "B"))
   target <- "document_tokens"
