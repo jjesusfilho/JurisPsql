@@ -9,12 +9,12 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
-#'con <- DBI::dbConnect(RPostgres::Postgres())
-#'data(consumidor)
-#'dplyr::copy_to(con,"consumidor",consumidor)
-#'psql_classify_decision(con,"consumidor","julgado","decisao")
-#'}
+#' \dontrun{
+#' con <- DBI::dbConnect(RPostgres::Postgres())
+#' data(consumidor)
+#' dplyr::copy_to(con, "consumidor", consumidor)
+#' psql_classify_decision(con, "consumidor", "julgado", "decisao")
+#' }
 psql_classify_decision <- function(con, tbl = NULL, decision = NULL, conclusion = NULL) {
   v1 <- "% parcial%"
   v2 <- "% procedente em parte%"

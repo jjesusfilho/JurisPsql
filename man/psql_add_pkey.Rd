@@ -12,7 +12,7 @@ psql_add_pkey(con, tbl)
 \item{tbl}{table's name}
 }
 \value{
-It doesn't return anything, it just adds 
+It doesn't return anything, it just adds
    a primary key to the table.
 }
 \description{
@@ -21,8 +21,8 @@ Adds primary key to table
 \examples{
 \dontrun{
 data(consumidor)
-con<-dbx::dbxConnect()
-dplyr::copy_to(con,"consumidor","consumidor")
-psql_add_pkey(con,"consumidor")
+con <- dbx::dbxConnect()
+dplyr::copy_to(con, "consumidor", "consumidor")
+psql_add_pkey(con, "consumidor")
 }
 }

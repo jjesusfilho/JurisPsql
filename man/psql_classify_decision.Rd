@@ -26,7 +26,7 @@ Creates a new column giving a one word conclusion of the decision
 \dontrun{
 con <- DBI::dbConnect(RPostgres::Postgres())
 data(consumidor)
-dplyr::copy_to(con,"consumidor",consumidor)
-psql_classify_decision(con,"consumidor","julgado","decisao")
+dplyr::copy_to(con, "consumidor", consumidor)
+psql_classify_decision(con, "consumidor", "julgado", "decisao")
 }
 }

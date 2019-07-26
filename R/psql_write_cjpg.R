@@ -15,30 +15,24 @@
 #' @examples
 #' \dontrun{
 #' con <- dbx::dbxConnect()
-#' psql(con,"consumidor",consumidor)
+#' psql(con, "consumidor", consumidor)
 #' }
-psql_write_cjpg <- function(con=NULL,tbl=NULL,data=NULL){
-
-
+psql_write_cjpg <- function(con = NULL, tbl = NULL, data = NULL) {
   if (is.null(con)) {
     stop("Please provide a connection")
-
   }
 
   if (is.null(tbl)) {
     stop("You must provide an existing table to insert data")
-
   }
 
   if (is.null(data)) {
     stop("You must provide the data to be inserted")
-
   }
 
-  DBI::dbCreateTable(con,tbl,data)
+  DBI::dbCreateTable(con, tbl, data)
 
-  psql_add_pkey(con,tbl)
-  psql_insert(con,tbl,data = data)
-  psql_cjpg_tokenize(con,tbl)
+  psql_add_pkey(con, tbl)
+  psql_insert(con, tbl, data = data)
+  psql_cjpg_tokenize(con, tbl)
 }
-

@@ -12,21 +12,16 @@
 #' @examples
 #' \dontrun{
 #' con <- dbx::dbxConnect()
-#' DBI::dbCreateTable(con,"consumidor",consumidor)
-#' psql_insert(con,"consumidor",consumidor)
+#' DBI::dbCreateTable(con, "consumidor", consumidor)
+#' psql_insert(con, "consumidor", consumidor)
 #' }
-psql_insert <- function(con,tbl=NULL,data=NULL,batch_size=50000) {
-
+psql_insert <- function(con, tbl = NULL, data = NULL, batch_size = 50000) {
   if (is.null(tbl)) {
     stop("You must provide an existing table to insert data")
-
   }
 
   if (is.null(data)) {
     stop("You must provide the data to be inserted")
-
   }
-  dbx::dbxInsert(con=con,table = tbl,records=data,batch_size = batch_size)
-
-
+  dbx::dbxInsert(con = con, table = tbl, records = data, batch_size = batch_size)
 }

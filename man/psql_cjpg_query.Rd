@@ -22,10 +22,10 @@ PostgreSQL full-text search
 }
 \examples{
 \dontrun{
-dplyr::copy_to(con,"consumidor",consumidor)
-df<-psql_cjpg_query(con,"consumidor","contrato & alguel")
-df<-psql_cjpg_query(con,"consumidor","contrato | alguel")
+dplyr::copy_to(con, "consumidor", consumidor)
+df <- psql_cjpg_query(con, "consumidor", "contrato & alguel")
+df <- psql_cjpg_query(con, "consumidor", "contrato | alguel")
 # Search for Julgo Procedente separated by up to 3 words:
-df<-psql_cjpg_query(con,"consumidor","julgo <3> procedente")
+df <- psql_cjpg_query(con, "consumidor", "julgo <3> procedente")
 }
 }

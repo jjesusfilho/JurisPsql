@@ -25,7 +25,7 @@ Insert data to existing table
 \examples{
 \dontrun{
 con <- dbx::dbxConnect()
-DBI::dbCreateTable(con,"consumidor",consumidor)
-psql_insert(con,"consumidor",consumidor)
+DBI::dbCreateTable(con, "consumidor", consumidor)
+psql_insert(con, "consumidor", consumidor)
 }
 }

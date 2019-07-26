@@ -25,6 +25,6 @@ This function firstly creates a table based on the
 \examples{
 \dontrun{
 con <- dbx::dbxConnect()
-psql(con,"consumidor",consumidor)
+psql(con, "consumidor", consumidor)
 }
 }

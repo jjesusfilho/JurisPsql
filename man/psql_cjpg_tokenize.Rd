@@ -20,8 +20,8 @@ Creates an index from columns assunto and julgados
 \examples{
 \dontrun{
 library(JurisPsql)
-con<-dbx::dbxConnect()
-dplyr::copy_to(con,"consumidor",consumidor)
-psql_cjpg_tokenize(con,"consumidor")
+con <- dbx::dbxConnect()
+dplyr::copy_to(con, "consumidor", consumidor)
+psql_cjpg_tokenize(con, "consumidor")
 }
 }
