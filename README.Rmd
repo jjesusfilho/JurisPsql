@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# JurisPsql
+# JurisPsql <img src='man/figures/logo.png' align="right" height="117" />
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/jjesusfilho/JurisPsql.svg?branch=master)](https://travis-ci.org/jjesusfilho/JurisPsql)
