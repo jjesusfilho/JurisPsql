@@ -24,4 +24,5 @@ psql_insert <- function(con, tbl = NULL, data = NULL, batch_size = 50000) {
     stop("You must provide the data to be inserted")
   }
   dbx::dbxInsert(con = con, table = tbl, records = data, batch_size = batch_size)
+
 }
