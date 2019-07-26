@@ -116,9 +116,16 @@
 <div id="decision-text-search" class="section level2">
 <h2 class="hasAnchor">
 <a href="#decision-text-search" class="anchor"></a>Decision-text search</h2>
-<p>I have implemented full-text search through the functions <code>psql_write_cjpg</code>, <code>psql_cjpg_tokenize</code>, and <code>psql_cjpg_query</code>. I still have some features to add but these ones are working well and I really think that with PostgreSQL you have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like mongodb or search engines like elastic-search and solr.</p>
+<p>I have implemented full-text search through the following functions:</p>
+<p>-<code>psql_write_cjpg</code>: Creates a new table, writes a dataframe to it, creates a primary key to the table, creates an inverted weighted index on columns <code>assunto</code> and <code>julgado</code>, and also creates a trigger to reindex the same table every time the table is updated or gets inserted with new rows.</p>
+<ul>
+<li><p><code>psql_cjpg_tokenize</code>: Creates an inverted weighted index from a cjpg table.</p></li>
+<li><p><code>psql_cjpg_insert</code>: Inserts new rows to a table. The whole table is automatically reindexed once new rows are inserted.</p></li>
+<li><p><code>psql_cjpg_trigger</code>: Adds a trigger to a cjpg table to reindex it every time it gets updated or inserted with new rows.</p></li>
+<li><p><code>psql_cjpg_query</code>: Queries words or phrases that same way you would do it with Google ou Bing.</p></li>
+</ul>
+<p>I have worked with Elasticsearch and Solr before, but I am convinced that with PostgreSQL you have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like Mongodb or search engines like Elasticsearch and Solr.</p>
 <p>This feature is particularly important to improve full-text search on whole-text decisions and also on panel opinions (acórdãos in Portuguese).</p>
-<p>Function <code>psql_write_cjpg</code> is not a replacement for <code><a href="https://www.rdocumentation.org/packages/DBI/topics/dbWriteTable">DBI::dbWriteTable</a></code>. It will create a table, write a data.frame to it, create a primary key and also an inverted weighted index.</p>
 <p>Depending on your PostgreSQL configuration it might take a long time if the number of documents is large. I have indexed 700.000 judicial decisions with minimal PostgreSQL config and it took several minutes.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RPostgres<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RPostgres/topics/Postgres">Postgres</a></span>())</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>

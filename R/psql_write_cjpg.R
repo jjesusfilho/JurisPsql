@@ -35,5 +35,5 @@ psql_write_cjpg <- function(con = NULL, tbl = NULL, data = NULL) {
   psql_add_pkey(con, tbl)
   psql_insert(con, tbl, data = data)
   psql_cjpg_tokenize(con, tbl)
-  psql_cjpg_trigger(con,tbl)
+  psql_cjpg_trigger(con, tbl)
 }

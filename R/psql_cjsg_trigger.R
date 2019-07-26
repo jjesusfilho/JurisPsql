@@ -12,20 +12,19 @@
 #' @export
 #'
 
-psql_cjpg_trigger <- function(con,tbl,config="pg_catalog.portuguese"){
+psql_cjpg_trigger <- function(con, tbl, config = "pg_catalog.portuguese") {
+  tbl <- "tbl"
 
-tbl="tbl"
+  source <- list(a = c("assunto", "A"), j = c("julgado", "B"))
+  target <- "document_tokens"
+  config <- "pg_catalog.portuguese"
 
-source <- list(a = c("assunto", "A"), j = c("julgado", "B"))
-target <- "document_tokens"
-config<-"pg_catalog.portuguese"
-
-  query<-glue::glue_sql("
+  query <- glue::glue_sql("
       CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE
 ON {`tbl`} FOR EACH ROW EXECUTE FUNCTION
-tsvector_update_trigger({`target`},{`config`},{`source$a[1]`},{`source$j[1]`})",.con=con)
+tsvector_update_trigger({`target`},{`config`},{`source$a[1]`},{`source$j[1]`})", .con = con)
 
-res<- DBI::dbSendQuery(con,query)
+  res <- DBI::dbSendQuery(con, query)
 
-DBI::dbClearResult(res)
+  DBI::dbClearResult(res)
 }

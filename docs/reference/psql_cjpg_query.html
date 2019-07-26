@@ -151,11 +151,11 @@ or "&lt;-&gt;" (FOLLOWED BY) to search for more than one word.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/copy_to.html'>copy_to</a></span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='no'>consumidor</span>)
-<span class='no'>df</span><span class='kw'>&lt;-</span><span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='st'>"contrato &amp; alguel"</span>)
-<span class='no'>df</span><span class='kw'>&lt;-</span><span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='st'>"contrato | alguel"</span>)
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/copy_to.html'>copy_to</a></span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='no'>consumidor</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='st'>"contrato &amp; alguel"</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='st'>"contrato | alguel"</span>)
 <span class='co'># Search for Julgo Procedente separated by up to 3 words:</span>
-<span class='no'>df</span><span class='kw'>&lt;-</span><span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='st'>"julgo &lt;3&gt; procedente"</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>psql_cjpg_query</span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='st'>"julgo &lt;3&gt; procedente"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

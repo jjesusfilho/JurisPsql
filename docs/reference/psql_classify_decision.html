@@ -157,8 +157,8 @@
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>DBI</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/DBI/topics/dbConnect'>dbConnect</a></span>(<span class='kw pkg'>RPostgres</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RPostgres/topics/Postgres'>Postgres</a></span>())
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>consumidor</span>)
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/copy_to.html'>copy_to</a></span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='no'>consumidor</span>)
-<span class='fu'>psql_classify_decision</span>(<span class='no'>con</span>,<span class='st'>"consumidor"</span>,<span class='st'>"julgado"</span>,<span class='st'>"decisao"</span>)
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/copy_to.html'>copy_to</a></span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='no'>consumidor</span>)
+<span class='fu'>psql_classify_decision</span>(<span class='no'>con</span>, <span class='st'>"consumidor"</span>, <span class='st'>"julgado"</span>, <span class='st'>"decisao"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
