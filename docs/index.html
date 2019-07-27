@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">JurisPsql</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9100</span>
       </span>
     </div>
 
@@ -89,13 +89,12 @@
 <!-- badges: start -->
 
 <p>The goal of JurisPsql is to provide functions to manipulate Brazilian legal PostgreSQL databases from R.</p>
-<p>Most of the functions are primarily concern with jurimetric needs not found in the <code>dbplyr</code> package, but they are useful to whoever work texts too.</p>
+<p>Most of the functions are primarily concern with jurimetric needs not found in the <code>dbplyr</code> package, but they are useful to whoever works texts too.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jjesusfilho/JurisPsql"</span>)</a></code></pre></div>
-<p>Obs. You must have a recent version of devtools installed, because this package imports my <code>tjsp</code> package which is only available on Github.</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -122,10 +121,10 @@
 <li><p><code>psql_cjpg_tokenize</code>: Creates an inverted weighted index from a cjpg table.</p></li>
 <li><p><code>psql_cjpg_insert</code>: Inserts new rows to a table. The whole table is automatically reindexed once new rows are inserted.</p></li>
 <li><p><code>psql_cjpg_trigger</code>: Adds a trigger to a cjpg table to reindex it every time it gets updated or inserted with new rows.</p></li>
-<li><p><code>psql_cjpg_query</code>: Queries words or phrases that same way you would do it with Google ou Bing.</p></li>
+<li><p><code>psql_cjpg_query</code>: Queries words or phrases the same way you would do it with Google ou Bing.</p></li>
 </ul>
-<p>I have worked with Elasticsearch and Solr before, but I am convinced that with PostgreSQL you have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like Mongodb or search engines like Elasticsearch and Solr.</p>
-<p>This feature is particularly important to improve full-text search on whole-text decisions and also on panel opinions (acórdãos in Portuguese).</p>
+<p>I have worked with Elasticsearch and Solr before, but I am convinced that with PostgreSQL we have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like Mongodb or search engines like Elasticsearch and Solr.</p>
+<p>This feature is particularly important to improve full-text search on text decisions and also on panel opinions (acórdãos in Portuguese).</p>
 <p>Depending on your PostgreSQL configuration it might take a long time if the number of documents is large. I have indexed 700.000 judicial decisions with minimal PostgreSQL config and it took several minutes.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RPostgres<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RPostgres/topics/Postgres">Postgres</a></span>())</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>

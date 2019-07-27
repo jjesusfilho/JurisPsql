@@ -17,8 +17,8 @@ The goal of JurisPsql is to provide functions to manipulate Brazilian
 legal PostgreSQL databases from R.
 
 Most of the functions are primarily concern with jurimetric needs not
-found in the `dbplyr` package, but they are useful to whoever work texts
-too.
+found in the `dbplyr` package, but they are useful to whoever works
+texts too.
 
 ## Installation
 
@@ -27,9 +27,6 @@ You can install the development version with:
 ``` r
 devtools::install_github("jjesusfilho/JurisPsql")
 ```
-
-Obs. You must have a recent version of devtools installed, because this
-package imports my `tjsp` package which is only available on Github.
 
 ## Usage
 
@@ -72,17 +69,16 @@ with new rows.
   - `psql_cjpg_trigger`: Adds a trigger to a cjpg table to reindex it
     every time it gets updated or inserted with new rows.
 
-  - `psql_cjpg_query`: Queries words or phrases that same way you would
+  - `psql_cjpg_query`: Queries words or phrases the same way you would
     do it with Google ou Bing.
 
 I have worked with Elasticsearch and Solr before, but I am convinced
-that with PostgreSQL you have the best of the three worlds (sql, nosql
+that with PostgreSQL we have the best of the three worlds (sql, nosql
 and search engine), no need to use either nosql like Mongodb or search
 engines like Elasticsearch and Solr.
 
 This feature is particularly important to improve full-text search on
-whole-text decisions and also on panel opinions (acórdãos in
-Portuguese).
+text decisions and also on panel opinions (acórdãos in Portuguese).
 
 Depending on your PostgreSQL configuration it might take a long time if
 the number of documents is large. I have indexed 700.000 judicial

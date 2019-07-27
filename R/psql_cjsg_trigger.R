@@ -12,18 +12,30 @@
 #' @export
 #'
 
-psql_cjpg_trigger <- function(con, tbl, config = "pg_catalog.portuguese") {
+psql_cjpg_trigger <- function(con,tbl,config="pg._catalog.portuguese"){
 
-  source <- list(a = c("assunto", "A"), j = c("julgado", "B"))
-  target <- "document_tokens"
-  config <- "pg_catalog.portuguese"
+  a<-"A"
+  b<-"B"
 
-  query <- glue::glue_sql("
-      CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE
-ON {`tbl`} FOR EACH ROW EXECUTE FUNCTION
-tsvector_update_trigger({`target`},{`config`},{`source$a[1]`},{`source$j[1]`})", .con = con)
+  f_name<-paste0(tbl,"_trigger()")
 
-  res <- DBI::dbSendQuery(con, query)
+  q<-glue::glue_sql("CREATE FUNCTION {DBI::SQL(f_name)} RETURNS trigger AS '
+begin
+  new.document_token :=
+     setweight(to_tsvector({`config`}, coalesce(new.assunto,'')), {`a`}) ||
+     setweight(to_tsvector({`config`}, coalesce(new.julgado,'')), {`b`});
+  return new;
+end
+' LANGUAGE plpgsql;",.con=con)
 
-  DBI::dbClearResult(res)
+  RPostgres::dbExecute(con,q)
+
+  q <- glue::glue_sql("
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE
+    ON {`tbl`} FOR EACH ROW EXECUTE FUNCTION {DBI::SQL(f_name)}
+",.con=con)
+
+
+  RPostgres::dbExecute(con,q)
+
 }

@@ -4,7 +4,7 @@
 \alias{psql_cjpg_trigger}
 \title{Adds trigger to cjpg table}
 \usage{
-psql_cjpg_trigger(con, tbl, config = "pg_catalog.portuguese")
+psql_cjpg_trigger(con, tbl, config = "pg._catalog.portuguese")
 }
 \arguments{
 \item{con}{connection}
