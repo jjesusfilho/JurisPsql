@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">JurisPsql</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9100</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9101</span>
       </span>
     </div>
 
@@ -129,7 +129,8 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RPostgres<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RPostgres/topics/Postgres">Postgres</a></span>())</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/psql_write_cjpg.html">psql_write_cjpg</a></span>(con,<span class="st">"consumidor"</span>,consumidor)</a></code></pre></div>
-<p>Once the indexing is over, you can use the function <code>psql_cjpg_query</code> to search for words or phrases the same way you do with any web search engine like Bing or Google. You can also include it in your shinyapp to allow users to do search.</p>
+<p>Once the indexing is done, you can use the function <code>psql_cjpg_query</code> to search for words or phrases the same way you do with any web search engine like Bing or Google. You can also include it in your shinyapp to allow users to do search.</p>
+<p>Function <code>psql_cjpg_query</code> allows faceting by subjects (assuntos) and also by courts (foros).</p>
 <p>Please note that the ‘JurisPsql’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>

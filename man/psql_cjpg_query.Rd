@@ -4,7 +4,7 @@
 \alias{psql_cjpg_query}
 \title{PostgreSQL full-text search}
 \usage{
-psql_cjpg_query(con, tbl, query)
+psql_cjpg_query(con, tbl, query, assuntos = NULL, foros = NULL)
 }
 \arguments{
 \item{con}{connection}
@@ -13,6 +13,10 @@ psql_cjpg_query(con, tbl, query)
 
 \item{query}{words to be searched. Separate by "&" (AND), "|" (OR),
 or "<->" (FOLLOWED BY) to search for more than one word.}
+
+\item{assuntos}{vector of subjects to filter. Defaults do all subjects}
+
+\item{foros}{vectos of courts to filter. Defaults to all courts.}
 }
 \value{
 A data.frame with the cjpg decisions according to

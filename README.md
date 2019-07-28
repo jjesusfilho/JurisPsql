@@ -90,10 +90,13 @@ con <- DBI::dbConnect(RPostgres::Postgres())
 psql_write_cjpg(con,"consumidor",consumidor)
 ```
 
-Once the indexing is over, you can use the function `psql_cjpg_query` to
+Once the indexing is done, you can use the function `psql_cjpg_query` to
 search for words or phrases the same way you do with any web search
 engine like Bing or Google. You can also include it in your shinyapp to
 allow users to do search.
+
+Function `psql_cjpg_query` allows faceting by subjects (assuntos) and
+also by courts (foros).
 
 Please note that the ‘JurisPsql’ project is released with a [Contributor
 Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
