@@ -16,17 +16,18 @@ psql_cjpg_trigger <- function(con,tbl,config="pg_catalog.portuguese"){
 
   a<-"A"
   b<-"B"
-
+  assunto<-"new.assunto"
+  julgado="new.julgado"
   f_name<-paste0(tbl,"_trigger()")
 
-  q<-glue::glue_sql("CREATE FUNCTION {DBI::SQL(f_name)} RETURNS trigger AS '
+  q<-glue::glue_sql("CREATE FUNCTION {DBI::SQL(f_name)} RETURNS trigger AS $$
 begin
-  new.document_token :=
-     setweight(to_tsvector({`config`}, coalesce(new.assunto,'')), {`a`}) ||
-     setweight(to_tsvector({`config`}, coalesce(new.julgado,'')), {`b`});
+  new.document_tokens :=
+     setweight(to_tsvector({config},coalesce({assunto},'')), {a}) ||
+     setweight(to_tsvector({config},coalesce({julgado},'')), {b});
   return new;
 end
-' LANGUAGE plpgsql;",.con=con)
+$$ LANGUAGE plpgsql;",.con=con)
 
   RPostgres::dbExecute(con,q)
 
