@@ -12,7 +12,7 @@
 #' @export
 #'
 
-psql_cjpg_trigger <- function(con,tbl,config="pg._catalog.portuguese"){
+psql_cjpg_trigger <- function(con,tbl,config="pg_catalog.portuguese"){
 
   a<-"A"
   b<-"B"
