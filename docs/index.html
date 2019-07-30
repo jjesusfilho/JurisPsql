@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">JurisPsql</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9101</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9102</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@
 <!-- badges: start -->
 
 <p>The goal of JurisPsql is to provide functions to manipulate Brazilian legal PostgreSQL databases from R.</p>
-<p>Most of the functions are primarily concern with jurimetric needs not found in the <code>dbplyr</code> package, but they are useful to whoever works texts too.</p>
+<p>Most of the functions are primarily concern with jurimetric needs not found in the <code>dbplyr</code> package, but they are useful to whoever works with texts.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -99,38 +99,36 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>I will be adding new functions little by little, but right now there are two very useful features, which are the decision classifier and the decision text search.</p>
-<p>I have added a sample dataset of consumers’ rights court decisions for you to play with the functions.</p>
+<p>New functions will be added little by little, but right now there are two very useful features, which are the decision classifier and the decision text search.</p>
+<p>There is a sample dataset of consumers’ rights court decisions to play with.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(JurisPsql)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RPostgres<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RPostgres/topics/Postgres">Postgres</a></span>())</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(consumidor)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/copy_to.html">copy_to</a></span>(con,<span class="st">"consumidor"</span>,consumidor)</a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/copy_to.html">copy_to</a></span>(con,<span class="st">"consumidor"</span>,consumidor)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="kw"><a href="reference/psql_classify_decision.html">psql_classify_decision</a></span>(con,<span class="st">"consumidor"</span>,<span class="st">"julgado"</span>,<span class="st">"decisao"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="reference/psql_classify_decision.html">psql_classify_decision</a></span>(con,<span class="st">"consumidor"</span>,julgado,<span class="st">"decisao"</span>)</a></code></pre></div>
 </div>
 <div id="decision-text-search" class="section level2">
 <h2 class="hasAnchor">
 <a href="#decision-text-search" class="anchor"></a>Decision-text search</h2>
-<p>I have implemented full-text search through the following functions:</p>
-<p>-<code>psql_write_cjpg</code>: Creates a new table, writes a dataframe to it, creates a primary key to the table, creates an inverted weighted index on columns <code>assunto</code> and <code>julgado</code>, and also creates a trigger to reindex the same table every time the table is updated or gets inserted with new rows.</p>
+<p>Full-text search is implemented through the following functions:</p>
 <ul>
-<li><p><code>psql_cjpg_tokenize</code>: Creates an inverted weighted index from a cjpg table.</p></li>
+<li><p><code>psql_write_cjpg</code>: Creates a new table, writes a dataframe to it, creates a primary key to the table, creates a weighted inverted index on columns <code>assunto</code> and <code>julgado</code>, and also builds a trigger to reindex the same table every time the table is updated or gets inserted with new rows.</p></li>
+<li><p><code>psql_cjpg_tokenize</code>: Creates an weighted inverted index from a cjpg table.</p></li>
 <li><p><code>psql_cjpg_insert</code>: Inserts new rows to a table. The whole table is automatically reindexed once new rows are inserted.</p></li>
 <li><p><code>psql_cjpg_trigger</code>: Adds a trigger to a cjpg table to reindex it every time it gets updated or inserted with new rows.</p></li>
 <li><p><code>psql_cjpg_query</code>: Queries words or phrases the same way you would do it with Google ou Bing.</p></li>
 </ul>
-<p>I have worked with Elasticsearch and Solr before, but I am convinced that with PostgreSQL we have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like Mongodb or search engines like Elasticsearch and Solr.</p>
 <p>This feature is particularly important to improve full-text search on text decisions and also on panel opinions (acórdãos in Portuguese).</p>
-<p>Depending on your PostgreSQL configuration it might take a long time if the number of documents is large. I have indexed 700.000 judicial decisions with minimal PostgreSQL config and it took several minutes.</p>
+<p>Depending on your PostgreSQL configuration it might take a long time if the number of documents is large. It took around one hour to index 700.000 judicial decisions .</p>
+<p>I have worked with Elasticsearch and Solr before, but I am convinced that with PostgreSQL we have the best of the three worlds (sql, nosql and search engine), no need to use either nosql like Mongodb or search engines like Elasticsearch and Solr.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RPostgres<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RPostgres/topics/Postgres">Postgres</a></span>())</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/psql_write_cjpg.html">psql_write_cjpg</a></span>(con,<span class="st">"consumidor"</span>,consumidor)</a></code></pre></div>
-<p>Once the indexing is done, you can use the function <code>psql_cjpg_query</code> to search for words or phrases the same way you do with any web search engine like Bing or Google. You can also include it in your shinyapp to allow users to do search.</p>
-<p>Function <code>psql_cjpg_query</code> allows faceting by subjects (assuntos) and also by courts (foros).</p>
+<p>Once the indexing is done, you can use the function <code>psql_cjpg_query</code> to search for words or phrases the same way you would do with any web search engine like Bing or Google. You can also include it in your shinyapp to allow users to do search.</p>
+<p>Function <code>psql_cjpg_query</code> allows faceting by subjects (assuntos) and also by courts (foros). Dates will be included pretty soon.</p>
 <p>Please note that the ‘JurisPsql’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
