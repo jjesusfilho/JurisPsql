@@ -4,7 +4,8 @@
 \alias{psql_cjpg_query}
 \title{PostgreSQL full-text search}
 \usage{
-psql_cjpg_query(con, tbl, query, assuntos = NULL, foros = NULL)
+psql_cjpg_query(con, tbl, query = NULL, assuntos = NULL,
+  foros = NULL)
 }
 \arguments{
 \item{con}{connection}

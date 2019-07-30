@@ -18,7 +18,7 @@
 #' # Search for Julgo Procedente separated by up to 3 words:
 #' df <- psql_cjpg_query(con, "consumidor", "julgo <3> procedente")
 #' }
-psql_cjpg_query <- function(con, tbl, query,assuntos=NULL,foros=NULL) {
+psql_cjpg_query <- function(con, tbl, query=NULL,assuntos=NULL,foros=NULL) {
   target <- "document_tokens"
 
   if (!is.null(assuntos) & !is.null(foros)){
@@ -37,6 +37,11 @@ psql_cjpg_query <- function(con, tbl, query,assuntos=NULL,foros=NULL) {
                         WHERE {`tbl`}.foro IN ({foros*})
                        AND {`tbl`}.{`target`} @@ websearch_to_tsquery({query})", .con = con)
 
+  } else if (is.null(query)){
+
+    q <- glue::glue_sql("SELECT processo,classe,assunto,comarca,foro,vara,disponibilizacao, julgado FROM {`tbl`}
+                        WHERE {`tbl`}.assunto IN ({assuntos*})
+                        AND {`tbl`}.foro IN ({foros*})",.con=con)
   } else
 
   q <- glue::glue_sql("SELECT processo,classe,assunto,comarca,foro,vara,disponibilizacao, julgado FROM {`tbl`}
