@@ -3,7 +3,6 @@
 \docType{package}
 \name{JurisPsql}
 \alias{JurisPsql}
-\alias{JurisPsql-package}
 \title{\code{JurisPsql} package}
 \description{
 Manipulates PostgreSQL Legal Databases

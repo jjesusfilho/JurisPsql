@@ -4,8 +4,7 @@
 \alias{psql_classify_decision}
 \title{Creates a new column giving a one word conclusion of the decision}
 \usage{
-psql_classify_decision(con, tbl = NULL, decision = NULL,
-  conclusion = NULL)
+psql_classify_decision(con, tbl = NULL, decision = NULL, conclusion = NULL)
 }
 \arguments{
 \item{con}{connection}
